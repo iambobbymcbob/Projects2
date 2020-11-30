@@ -1,0 +1,125 @@
+import turtle
+
+roomba_zig = turtle.Turtle()
+roomba_spiral = turtle.Turtle()
+wall = turtle.Turtle()
+wall.color("black")     # wall is black
+
+roomba_zig.color("blue")        # zig zag path is blue
+roomba_spiral.color("red")      # spiral path is red
+
+
+n = int(input("Length of room "))*10
+m = int(input("Breadth of room "))*10
+
+if bool(n) and bool(m) is True:
+
+    wall.hideturtle()
+    wall.goto(-1, 1)
+    wall.forward(n)
+    wall.right(90)
+    wall.forward(m)
+    wall.right(90)
+    wall.forward(n)
+    wall.right(90)
+    wall.forward(m)
+
+    roomba_zig.forward(n-1)
+    roomba_spiral.forward(n-1)
+
+    m_arb = m/10 - 1
+
+    s = 10       # sweep meaning sweeping across screen
+
+    if m_arb > 0:
+        roomba_zig.right(90)
+        roomba_zig.forward(10)
+        roomba_zig.right(90)
+        roomba_zig.forward(n-10)
+
+    if m_arb > 1:
+        roomba_spiral.right(90)
+        roomba_spiral.forward(m-s)
+        roomba_spiral.right(90)
+        roomba_spiral.forward(n-s)
+
+    m_arb = m_arb - 1
+
+    while m_arb > 0:
+        roomba_zig.left(90)
+        roomba_zig.forward(10)
+        roomba_zig.left(90)
+        roomba_zig.forward(n-10)
+
+        s = s + 10
+
+        roomba_spiral.right(90)
+        roomba_spiral.forward(m-s)
+        roomba_spiral.right(90)
+        roomba_spiral.forward(n-s)
+
+        m_arb = m_arb - 1
+
+        if m_arb > 0:
+            roomba_zig.right(90)
+            roomba_zig.forward(10)
+            roomba_zig.right(90)
+            roomba_zig.forward(n-10)
+
+            s = s + 10
+
+            roomba_spiral.right(90)
+            roomba_spiral.forward(m-s)
+            roomba_spiral.right(90)
+            roomba_spiral.forward(n-s)
+
+            m_arb = m_arb - 1
+
+
+
+M = m/10
+N = n/10
+
+zig_time = M*N + 2*M - 3
+spiral_time = -0.5*M*M + (3.5 + N)*M - 4
+
+print("Time taken by zig zag was " + str(zig_time))
+print("Time taken by spiral was " + str(spiral_time))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
